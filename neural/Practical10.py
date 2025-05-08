@@ -96,3 +96,61 @@ for step in range(201):
 
 # Final result
 show_img(target, "Final Stylized Image")
+
+"""
+The VGG19 model is a deep convolutional neural network architecture introduced by the Visual Geometry Group (VGG) at the University of Oxford. It is widely used in computer vision tasks, especially for image classification, feature extraction, and style transfer.
+
+🔍 Overview of VGG19
+Name: VGG19
+
+Published in: Very Deep Convolutional Networks for Large-Scale Image Recognition (Simonyan and Zisserman, 2014)
+
+Model Size: ~143.7 million parameters
+
+Input size: 224×224 RGB image
+
+Depth: 19 layers (16 convolutional + 3 fully connected)
+
+Key Strength: Simplicity and uniform architecture—uses only 3×3 convolutions and 2×2 max pooling layers.
+
+🧠 Architecture Structure
+The number 19 in VGG19 refers to the total layers with learnable weights:
+
+16 Convolutional layers
+
+3 Fully Connected layers
+
+scss
+Copy
+Edit
+[Conv3-64, Conv3-64, MaxPool]          → Block 1
+[Conv3-128, Conv3-128, MaxPool]        → Block 2
+[Conv3-256, Conv3-256, Conv3-256, Conv3-256, MaxPool] → Block 3
+[Conv3-512, Conv3-512, Conv3-512, Conv3-512, MaxPool] → Block 4
+[Conv3-512, Conv3-512, Conv3-512, Conv3-512, MaxPool] → Block 5
+[FC-4096, FC-4096, FC-1000]            → Classifier
+All convolution layers use:
+
+3×3 kernels, stride 1, padding 1
+
+ReLU activation
+
+MaxPooling layers use:
+
+2×2 window with stride 2
+
+🔧 PyTorch Implementation
+python
+Copy
+Edit
+from torchvision.models import vgg19, VGG19_Weights
+model = vgg19(weights=VGG19_Weights.IMAGENET1K_V1)
+The model is trained on ImageNet (1000 classes).
+
+You can access only the feature layers for feature extraction via:
+
+python
+Copy
+Edit
+features = model.features
+"""
